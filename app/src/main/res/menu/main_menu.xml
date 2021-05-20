@@ -7,24 +7,31 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/info"
+            android:icon="@drawable/school"
             android:title="Info"/>
         <item
+            android:icon="@drawable/noticeboard"
             android:id="@+id/notice_board"
             android:title="Notice Board"/>
 
         <item
+            android:icon="@drawable/timetable"
             android:id="@+id/time_table"
             android:title="Time Table"/>
 
         <item
+            android:icon="@drawable/syllabus"
             android:id="@+id/syllabus"
-            android:title="Syllabus"/>
+            android:title="Syllabus">
+        </item>
 
         <item
+            android:icon="@drawable/attendance"
             android:id="@+id/attendance"
             android:title="Attendance"/>
 
         <item
+            android:icon="@drawable/logout"
             android:id="@+id/logout"
             android:title="Logout"/>
     </group>
