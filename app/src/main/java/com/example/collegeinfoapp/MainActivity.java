@@ -49,6 +49,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.info:
+                break;
+            case R.id.notice_board:
+                break;
+            case R.id.syllabus:
+                break;
+            case R.id.time_table:
+                break;
+            case R.id.attendance:
+                break;
+
+        }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }

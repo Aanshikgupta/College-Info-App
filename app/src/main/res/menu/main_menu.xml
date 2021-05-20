@@ -6,6 +6,9 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/info"
+            android:title="Info"/>
+        <item
             android:id="@+id/notice_board"
             android:title="Notice Board"/>
 

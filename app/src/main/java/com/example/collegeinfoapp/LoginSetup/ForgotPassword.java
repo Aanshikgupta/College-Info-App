@@ -28,20 +28,18 @@ public class ForgotPassword extends AppCompatActivity {
         resetemail=findViewById(R.id.resetemail);
     }
 
-    public void sendverificationlink(View view) {
+
+    //On button click send password reset link ot email
+    public void sendVerificationlink(View view) {
+
         FirebaseAuth mAuth;
         mAuth=FirebaseAuth.getInstance();
         String email=resetemail.getEditText().getText().toString().trim();
-        final String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
-        if(resetemail==null) {
-            resetemail.setError("This field cannot be empty.");
+
+        //validation
+        if(!validate(email))
             return;
-        }
-        if(!(email.matches(EMAIL_PATTERN)))
-        {
-            resetemail.setError("Please give correct email.");
-            return;
-        }
+
 
 
         mAuth.sendPasswordResetEmail(email).addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -60,10 +58,23 @@ public class ForgotPassword extends AppCompatActivity {
 
             }
         });
-
-
     }
 
+    public boolean validate(String email){
+        final String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        if(resetemail==null) {
+            resetemail.setError("This field cannot be empty.");
+            return false;
+        }
+        if(!(email.matches(EMAIL_PATTERN)))
+        {
+            resetemail.setError("Please give correct email.");
+            return false;
+        }
+        return true;
+    }
+
+    //back button
     public void goToBack(View view) {
         finish();
     }
