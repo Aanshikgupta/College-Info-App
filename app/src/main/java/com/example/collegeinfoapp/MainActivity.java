@@ -56,6 +56,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         TextView textViewEmail = navigationHeader.findViewById(R.id.nav_header_email);
         imageView.setImageResource(R.drawable.profile);
         String res=Objects.requireNonNull(mAuth.getCurrentUser()).getEmail();
+
+
         assert res != null;
         res=res.substring(0,res.indexOf('@'));
         TextView name=navigationHeader.findViewById(R.id.nav_header_name);
@@ -73,6 +75,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 , R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         //it's instance ties together drawer layout and toolbar
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.setDrawerIndicatorEnabled(true);
         actionBarDrawerToggle.syncState();//setting up hamburger icon
     }
 

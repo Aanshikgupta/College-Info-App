@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,7 +27,7 @@ public class AttendanceFragment extends Fragment {
 
    private FirebaseRemoteConfig firebaseRemoteConfig;
    View view;
-   TextView attendancetext;
+   Button attendance;
     public AttendanceFragment() {
         // Required empty public constructor
     }
@@ -40,14 +41,24 @@ public class AttendanceFragment extends Fragment {
         view= inflater.inflate(R.layout.fragment_attendance, container, false);
         setView(view);
         setFirebaseRemoteConfig();
-        fetchFirebaseRemoteConfig();
+        setOnclick();
 
 
         return view;
     }
 
+    private void setOnclick() {
+         attendance.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+
+
+             }
+         });
+    }
+
     private void setView(View view) {
-        attendancetext=view.findViewById(R.id.textView);
+        attendance=view.findViewById(R.id.button);
     }
 
     private void setFirebaseRemoteConfig(){
@@ -59,21 +70,5 @@ public class AttendanceFragment extends Fragment {
 
     }
 
-    private void fetchFirebaseRemoteConfig(){
-        HashMap<String,Object> defaults=new HashMap<>();
-        defaults.put("ATTENDANCE",0);
-        defaults.put("IS_UPDATE",false);
-        firebaseRemoteConfig.setDefaultsAsync(defaults);
 
-        firebaseRemoteConfig.fetchAndActivate().addOnCompleteListener(task -> {
-            if(task.isSuccessful()){
-                String text="Attendance = "+firebaseRemoteConfig.getLong("ATTENDANCE");
-                attendancetext.setText(text);
-            }
-            else{
-                Toast.makeText(getContext(),"Error",Toast.LENGTH_LONG).show();
-            }
-
-        });
-    }
 }

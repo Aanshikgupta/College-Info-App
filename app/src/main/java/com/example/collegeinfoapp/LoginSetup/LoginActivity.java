@@ -94,8 +94,8 @@ public class LoginActivity extends AppCompatActivity {
         //Log in with user email and password
         mAuth.signInWithEmailAndPassword(auemail, aupassword)
                 .addOnCompleteListener(task -> {
+                    progressBar.setVisibility(View.GONE);
                     if(task.isSuccessful()) {
-                        progressBar.setVisibility(View.GONE);
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(intent);
                         finish();
